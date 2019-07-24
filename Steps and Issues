@@ -1,0 +1,36 @@
+As a beginner I have always stumbled to various sites for the error i.e. new to me.
+And also I will try to summarise here the errors that I faced.
+
+#IntelliJ
+1. Create a simple maven project
+2. Add WEB-INF Folder, it automatically picks up i.e it is the we project
+3. Add web.xml and spring.xml files in WEB-INF folder.
+4. Add Controller
+5. Add jsp pages
+
+Error in spring.xml :
+a) 
+The matching wildcard is strict, but no declaration can be found for element 'tx:annotation-driven'
+transaction schema was not configured properly
+<beans xmlns="http://www.springframework.org/schema/beans"
+              ...
+              xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+		      http://www.springframework.org/schema/beans
+    	    http://www.springframework.org/schema/beans/spring-beans.xsd
+    	    ....
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+.....
+</beans>
+
+=========== Reference for schemas : http://www.springframework.org/schema/ ==================
+
+b)
+java.lang.IllegalStateException: Cannot convert value of type [java.lang.String] to required type [javax.sql.DataSource]
+<property name="dataSource" ref="myDataSource"></property>
+===used value instead of ref.===
+
+c) Deployment issues with tomcat in intellij
+First setup locally tomcat using reference :
+=========  https://www.mkyong.com/intellij/intellij-idea-run-debug-web-application-on-tomcat/ ========
