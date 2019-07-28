@@ -34,3 +34,8 @@ java.lang.IllegalStateException: Cannot convert value of type [java.lang.String]
 c) Deployment issues with tomcat in intellij
 First setup locally tomcat using reference :
 =========  https://www.mkyong.com/intellij/intellij-idea-run-debug-web-application-on-tomcat/ ========
+
+
+d) Unpush git commit :
+	https://stackoverflow.com/questions/1270514/undoing-a-git-push
+	
