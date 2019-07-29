@@ -23,4 +23,23 @@ public class CustomerDAO implements ICustomerDAO{
         List<Customer> customers = query.getResultList();
         return customers;
     }
+
+    public void saveCustomer(Customer customer){
+        Session session = sessionFactory.getCurrentSession() ;
+        //saveOrUpdate - save if customer is new
+        session.saveOrUpdate(customer);
+    }
+
+    public Customer getCustomer(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Customer customer = session.get(Customer.class, id);
+        return customer;
+    }
+
+    public void deleteCustomer(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("delete from Customer where id=: customerId ");
+        query.setParameter("customerId",id);
+        query.executeUpdate();
+    }
 }

@@ -23,6 +23,8 @@
             <h2>Save Customer</h2>
         </div>
         <form:form action="saveCustomer" modelAttribute="customer" method="POST">
+
+            <form:hidden path="id" />
                 <table>
                     <tbody>
                     <tr>
@@ -39,16 +41,17 @@
                     </tr>
                     <tr>
                         <td><label></label></td>
-                        <td><input type="button" value="Save" class="save"></td>
+                        <td><input type="submit" value="Save" class="save"></td>
                     </tr>
                     </tbody>
                 </table>
             </form:form>
 
-        <div id="container"></div>
+        <div id="container">
         <p>
             <a href="${pageContext.request.contextPath}/customer/list">Back to list</a>
         </p>
+        </div>
     </div>
 </body>
 </html>

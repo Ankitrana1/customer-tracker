@@ -6,8 +6,7 @@ import com.ankit.tracker.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,9 +25,28 @@ public class CustomerController {
     }
 
     @GetMapping("showFormForAdd")
-    public String addCustomer(Model model){
+    public String showFormForAdd(Model model){
         Customer customer = new Customer();
         model.addAttribute("customer",customer);
         return "add-customer";
+    }
+
+    @PostMapping("saveCustomer")
+    public String addCustomer(@ModelAttribute("customer") Customer customer){
+        customerService.saveCustomer(customer);
+        return "redirect://customer/list";
+    }
+
+    @GetMapping("showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("customerId") int id, Model model){
+        Customer customer = customerService.getCustomer(id);
+        model.addAttribute("customer",customer);
+        return "add-customer";
+    }
+
+    @GetMapping("delete")
+    public String deleteCustomer(@RequestParam("customerId") int id, Model model){
+        customerService.deleteCustomer(id);
+        return "redirect://customer/list";
     }
 }

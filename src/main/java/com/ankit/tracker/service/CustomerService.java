@@ -18,4 +18,19 @@ public class CustomerService implements ICustomerService {
     public List<Customer> getCustomers() {
         return customerDAO.getCustomers();
     }
+
+    @Transactional
+    public void saveCustomer(Customer customer) {
+        customerDAO.saveCustomer(customer);
+    }
+
+    @Transactional
+    public Customer getCustomer(int id) {
+        return customerDAO.getCustomer(id);
+    }
+
+    @Transactional
+    public void deleteCustomer(int id) {
+        customerDAO.deleteCustomer(id);
+    }
 }
